@@ -7,7 +7,7 @@ dataSet.close()
 seq = ""
 
 for i in data:
-    seq+=i
+    seq += i
 
 workSet = seq.split(">")
 workSet.remove('')
