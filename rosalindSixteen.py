@@ -1,25 +1,21 @@
 import math
+from Bio.SeqUtils import GC
 
 DNA = input("Input DNA string: ")
 numbers = input("Input values between 0 and 1: ").split(" ")
 
 A = [float(i) for i in numbers]
 
-countAll = 0
-countCG = 0
-
-for j in DNA:
-    if j == "C" or j == "G":
-        countCG = countCG + 1
-        countAll = countAll + 1
-    else:
-        countAll = countAll + 1
-
-GC = countCG/countAll
-
 B = []
 
 for i in A:
-    B.append(math.log(GC) - math.log(i)) #klele
+    logForB = 0
+    for j in DNA:
+        if j == "G" or j == "C":
+            logForB += math.log(i/2, 10)
+        else:
+            logForB += math.log((1 - i) / 2, 10)
+    B.append(logForB)
 
-print(B)
+for i in B:
+    print(i)
